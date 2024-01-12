@@ -1,6 +1,6 @@
 # Pay-O
 
-A project developed by the TechByte Innovation team
+A project developed by the TechByte Innovation team using Flutter Framework
 
 ## Getting Started
 
