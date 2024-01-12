@@ -1,16 +1,13 @@
-# pay_o
+# Pay-O
 
-A new Flutter project.
+A project developed by the TechByte Innovation team
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Currently the Pay-O mobile application is still in the development stage, so the sign-in (authentication) feature has just arrived. With an account like the following:
 
-A few resources to get you started if this is your first Flutter project:
+eve.holt@reqres.in
+cityslicka
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+and will be directed to the Dashboard.
+Currently implementation on the Frontend is still not far away, because the Backend is still in the development stage.
