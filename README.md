@@ -3,9 +3,9 @@
 A project developed by the TechByte Innovation team using Flutter Framework.
 
 ## Description Team:
-Krisna Purnama as Hacker
-Jelang Anugrah Raharjo as Hacker
-Hanif Ahmad Rizqullah as Hustler
+Krisna Purnama as Hacker\
+Jelang Anugrah Raharjo as Hacker\
+Hanif Ahmad Rizqullah as Hustler\
 Fanza Atsila Fizarli as Hipster
 
 ## Getting Started
