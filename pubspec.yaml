@@ -43,7 +43,8 @@ dependencies:
   page_transition: ^2.0.9
   flutter_secure_storage: ^9.0.0
   midtrans_sdk: ^0.4.0
-  simple_shadow: ^0.3.1
+  flutter_otp_text_field: ^1.1.1
+  toast: ^0.3.0
 
 dev_dependencies:
   flutter_test:

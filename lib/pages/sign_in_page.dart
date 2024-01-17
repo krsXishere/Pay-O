@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pay_o/common/theme.dart';
-import 'package:pay_o/pages/dashboard_page.dart';
 import 'package:pay_o/pages/register_page.dart';
 import 'package:pay_o/providers/auth_provider.dart';
 import 'package:pay_o/widgets/custom_button_auth_widget.dart';
 import 'package:pay_o/widgets/custom_textformfield_widget.dart';
+import 'package:pay_o/widgets/navigation_bar_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -47,7 +47,7 @@ class _SignInPageState extends State<SignInPage> {
       Navigator.pushAndRemoveUntil(
         context,
         PageTransition(
-          child: const DashboardPage(),
+          child: const NavigationBarWidget(),
           type: PageTransitionType.rightToLeft,
         ),
         (Route<dynamic> route) => false,
@@ -104,7 +104,10 @@ class _SignInPageState extends State<SignInPage> {
                   width: width,
                   decoration: BoxDecoration(
                     color: white,
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      topRight: Radius.circular(15),
+                    ),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(20),

@@ -30,10 +30,8 @@ class CustomTextFormFieldWidget extends StatelessWidget {
                 style: secondaryTextStyle,
               ),
               TextFormField(
-                style: primaryTextStyle.copyWith(color: black),
-                cursorColor: tertiary300,
-                cursorHeight: 20,
-                cursorWidth: 3,
+                style: secondaryTextStyle,
+                cursorColor: primaryColor,
                 controller: controller,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
@@ -71,10 +69,8 @@ class CustomTextFormFieldWidget extends StatelessWidget {
                 style: secondaryTextStyle,
               ),
               TextFormField(
-                style: primaryTextStyle.copyWith(color: black),
-                cursorColor: tertiary300,
-                cursorHeight: 20,
-                cursorWidth: 3,
+                style: secondaryTextStyle,
+                cursorColor: primaryColor,
                 controller: controller,
                 keyboardType: TextInputType.text,
                 obscureText: isObsecure,

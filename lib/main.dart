@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pay_o/pages/onboarding_page.dart';
 import 'package:pay_o/providers/auth_provider.dart';
+import 'package:pay_o/providers/navigation_bar_provider.dart';
+import 'package:pay_o/providers/pending_payment_history_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -21,12 +23,18 @@ class PayO extends StatefulWidget {
 }
 
 class _PayOState extends State<PayO> {
-  @override
+@override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => NavigationBarProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PendingPaymentHistoryProvider(),
         ),
       ],
       child: Builder(

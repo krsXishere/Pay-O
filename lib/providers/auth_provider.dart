@@ -14,6 +14,10 @@ class AuthProvider with ChangeNotifier {
   int get statusCode => _statusCode;
   String? _token = "";
   String? get token => _token;
+  int _indexTab = 0;
+  int get indexTab => _indexTab;
+  String _enteredPin = "";
+  String get enteredPin => _enteredPin;
 
   AndroidOptions _getAndroidOptions() {
     return const AndroidOptions(
@@ -36,6 +40,30 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  checkIndex(int value) {
+    _indexTab = value;
+    notifyListeners();
+  }
+
+  inputPin(int number) {
+    if (enteredPin.length < 4) {
+      _enteredPin += number.toString();
+    }
+    notifyListeners();
+  }
+
+  addOnsInputPin() {
+    if (_enteredPin.isNotEmpty) {
+      _enteredPin = _enteredPin.substring(0, _enteredPin.length - 1);
+    }
+    notifyListeners();
+  }
+
+  resetEnteredPin() {
+    _enteredPin = "";
+    notifyListeners();
+  }
+
   Future<bool> signIn(
     String email,
     String password,
@@ -52,7 +80,8 @@ class AuthProvider with ChangeNotifier {
       _token = await storage.read(key: "token");
       // String? value = await storage.read(key: "token");
       // print("Token: $value");
-
+      checkLoading(false);
+      
       return true;
     } catch (e) {
       checkLoading(false);
