@@ -9,16 +9,20 @@ import '../widgets/custom_button_auth_widget.dart';
 import '../widgets/custom_textformfield_widget.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+import '../widgets/navigation_bar_widget.dart';
+
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage>
+class _SignUpPageState extends State<SignUpPage>
     with SingleTickerProviderStateMixin {
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmationPasswordController =
       TextEditingController();
@@ -42,8 +46,26 @@ class _RegisterPageState extends State<RegisterPage>
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider signUpProvider = Provider.of<AuthProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    showSnackBar(
+      String message,
+      Color color,
+    ) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: color,
+          content: Text(
+            message,
+            style: primaryTextStyle.copyWith(
+              color: white,
+            ),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: primaryColor,
@@ -116,6 +138,47 @@ class _RegisterPageState extends State<RegisterPage>
     BuildContext context,
     AuthProvider value,
   ) {
+    showSnackBar(
+      String message,
+      Color color,
+    ) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: color,
+          content: Text(
+            message,
+            style: primaryTextStyle.copyWith(
+              color: white,
+            ),
+          ),
+        ),
+      );
+    }
+
+    checkInputTabBarOne() {
+      if (nameController.text.isNotEmpty &&
+          emailController.text.isNotEmpty &&
+          passwordController.text.isNotEmpty &&
+          phoneController.text.isNotEmpty) {
+        if (passwordController.text == confirmationPasswordController.text) {
+          movePage(
+            context,
+            1,
+          );
+        } else {
+          showSnackBar(
+            "Confirmation password must be the same!",
+            Colors.red,
+          );
+        }
+      } else {
+        showSnackBar(
+          "Fill in all fields!",
+          Colors.red,
+        );
+      }
+    }
+
     return Column(
       key: const Key("tabBarOne"),
       children: [
@@ -135,6 +198,13 @@ class _RegisterPageState extends State<RegisterPage>
         //   height: defaultPadding,
         // ),
         CustomTextFormFieldWidget(
+          hintText: "Enter your full name",
+          label: "Name",
+          isPasswordField: false,
+          controller: nameController,
+          onTap: () {},
+        ),
+        CustomTextFormFieldWidget(
           hintText: "Enter your email address",
           label: "Email",
           isPasswordField: false,
@@ -148,7 +218,7 @@ class _RegisterPageState extends State<RegisterPage>
           hintText: "088212345678",
           label: "Phone Number",
           isPasswordField: false,
-          controller: emailController,
+          controller: phoneController,
           onTap: () {},
         ),
         SizedBox(
@@ -182,10 +252,7 @@ class _RegisterPageState extends State<RegisterPage>
           color: primaryColor,
           isLoading: value.isLoading,
           onPressed: () {
-            movePage(
-              context,
-              1,
-            );
+            checkInputTabBarOne();
           },
         ),
         SizedBox(
@@ -307,6 +374,50 @@ class _RegisterPageState extends State<RegisterPage>
     BuildContext context,
     AuthProvider value,
   ) {
+    showSnackBar(
+      String message,
+      Color color,
+    ) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: color,
+          content: Text(
+            message,
+            style: primaryTextStyle.copyWith(
+              color: white,
+            ),
+          ),
+        ),
+      );
+    }
+
+    navigate() {
+      Navigator.pushAndRemoveUntil(
+        context,
+        PageTransition(
+          child: const NavigationBarWidget(),
+          type: PageTransitionType.rightToLeft,
+        ),
+        (Route<dynamic> route) => false,
+      );
+    }
+
+    signUp() async {
+      if (await value.signUp(
+        nameController.text,
+        emailController.text,
+        passwordController.text,
+        int.parse(phoneController.text),
+      )) {
+        navigate();
+      } else {
+        showSnackBar(
+          "Gagal masuk!\nError: ${value.statusCode}",
+          Colors.red,
+        );
+      }
+    }
+
     return Column(
       key: const Key("tabBarThree"),
       children: [
@@ -363,8 +474,14 @@ class _RegisterPageState extends State<RegisterPage>
         CustomButtonAuthWidget(
           text: "Save",
           color: primaryColor,
-          isLoading: false,
-          onPressed: () {},
+          isLoading: value.isLoading,
+          onPressed: () {
+            print(nameController.text +
+                emailController.text +
+                passwordController.text +
+                phoneController.text);
+            signUp();
+          },
         ),
       ],
     );

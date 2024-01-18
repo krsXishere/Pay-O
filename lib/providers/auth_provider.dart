@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:pay_o/services/auth_service.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -7,23 +6,15 @@ class AuthProvider with ChangeNotifier {
   bool _isObsecure = true;
   bool get isObsecure => _isObsecure;
   bool _isLoading = false;
-  bool _isObsecureConfirmation = false;
+  bool _isObsecureConfirmation = true;
   bool get isObsecureConfirmation => _isObsecureConfirmation;
   bool get isLoading => _isLoading;
   int _statusCode = 0;
   int get statusCode => _statusCode;
-  String? _token = "";
-  String? get token => _token;
   int _indexTab = 0;
   int get indexTab => _indexTab;
   String _enteredPin = "";
   String get enteredPin => _enteredPin;
-
-  AndroidOptions _getAndroidOptions() {
-    return const AndroidOptions(
-      encryptedSharedPreferences: true,
-    );
-  }
 
   checkObsecure() {
     _isObsecure = !_isObsecure;
@@ -68,20 +59,38 @@ class AuthProvider with ChangeNotifier {
     String email,
     String password,
   ) async {
-    final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
     checkLoading(true);
     try {
-      await authService
-          .signIn(
-            email,
-            password,
-          )
-          .then((value) => _statusCode = value);
-      _token = await storage.read(key: "token");
-      // String? value = await storage.read(key: "token");
-      // print("Token: $value");
+      _statusCode = await authService.signIn(
+        email,
+        password,
+      );
       checkLoading(false);
-      
+
+      return true;
+    } catch (e) {
+      checkLoading(false);
+
+      return false;
+    }
+  }
+
+  Future<bool> signUp(
+    String name,
+    String email,
+    String password,
+    int phone,
+  ) async {
+    checkLoading(true);
+    try {
+      _statusCode = await authService.signUp(
+        name,
+        email,
+        password,
+        phone,
+      );
+      checkLoading(false);
+
       return true;
     } catch (e) {
       checkLoading(false);

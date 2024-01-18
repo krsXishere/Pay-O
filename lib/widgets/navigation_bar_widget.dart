@@ -5,6 +5,7 @@ import 'package:pay_o/common/theme.dart';
 import 'package:pay_o/pages/payment_history_page.dart';
 import 'package:pay_o/pages/pending_payment_history_page.dart';
 import 'package:pay_o/pages/profile_page.dart';
+import 'package:pay_o/pages/qris_page.dart';
 import 'package:provider/provider.dart';
 import '../pages/dashboard_page.dart';
 import '../providers/navigation_bar_provider.dart';
@@ -87,7 +88,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                   Navigator.push(
                     context,
                     PageTransition(
-                      child: const SizedBox.shrink(),
+                      child: const QRISPage(),
                       type: PageTransitionType.rightToLeft,
                     ),
                   );

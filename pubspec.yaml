@@ -45,6 +45,8 @@ dependencies:
   midtrans_sdk: ^0.4.0
   flutter_otp_text_field: ^1.1.1
   toast: ^0.3.0
+  qris: ^0.7.1
+  qr_code_scanner: ^1.0.1
 
 dev_dependencies:
   flutter_test:

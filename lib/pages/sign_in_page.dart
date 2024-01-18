@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pay_o/common/theme.dart';
-import 'package:pay_o/pages/register_page.dart';
+import 'package:pay_o/pages/sign_up_page.dart';
 import 'package:pay_o/providers/auth_provider.dart';
 import 'package:pay_o/widgets/custom_button_auth_widget.dart';
 import 'package:pay_o/widgets/custom_textformfield_widget.dart';
@@ -211,7 +211,7 @@ class _SignInPageState extends State<SignInPage> {
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     PageTransition(
-                                      child: const RegisterPage(),
+                                      child: const SignUpPage(),
                                       type: PageTransitionType.rightToLeft,
                                     ),
                                     (Route<dynamic> route) => false,

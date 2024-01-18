@@ -5,6 +5,7 @@ import 'package:pay_o/pages/onboarding_page.dart';
 import 'package:pay_o/providers/auth_provider.dart';
 import 'package:pay_o/providers/navigation_bar_provider.dart';
 import 'package:pay_o/providers/pending_payment_history_provider.dart';
+import 'package:pay_o/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -35,6 +36,9 @@ class _PayOState extends State<PayO> {
         ),
         ChangeNotifierProvider(
           create: (context) => PendingPaymentHistoryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UserProvider(),
         ),
       ],
       child: Builder(
