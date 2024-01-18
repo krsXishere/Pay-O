@@ -46,26 +46,8 @@ class _SignUpPageState extends State<SignUpPage>
 
   @override
   Widget build(BuildContext context) {
-    AuthProvider signUpProvider = Provider.of<AuthProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-
-    showSnackBar(
-      String message,
-      Color color,
-    ) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: color,
-          content: Text(
-            message,
-            style: primaryTextStyle.copyWith(
-              color: white,
-            ),
-          ),
-        ),
-      );
-    }
 
     return Scaffold(
       backgroundColor: primaryColor,
@@ -476,10 +458,6 @@ class _SignUpPageState extends State<SignUpPage>
           color: primaryColor,
           isLoading: value.isLoading,
           onPressed: () {
-            print(nameController.text +
-                emailController.text +
-                passwordController.text +
-                phoneController.text);
             signUp();
           },
         ),

@@ -1,9 +1,6 @@
-// ignore_for_file: avoid_print
-
 import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:pay_o/common/url.dart';
 
 class AuthService {
   AndroidOptions _getAndroidOptions() {
@@ -34,7 +31,7 @@ class AuthService {
 
     if (response.statusCode == 200) {
       var jsonObject = jsonDecode(response.body);
-      print("Token: ${jsonObject['token']}");
+      // print("Token: ${jsonObject['token']}");
       await storage.write(key: "token", value: jsonObject['token'].toString());
 
       return response.statusCode;
@@ -66,11 +63,11 @@ class AuthService {
       body: body,
     );
 
-    print("URL API: ${response.statusCode}");
+    // print("URL API: ${response.statusCode}");
 
     if (response.statusCode == 200) {
       var jsonObject = jsonDecode(response.body);
-      print("Token: ${jsonObject['token']}");
+      // print("Token: ${jsonObject['token']}");
       await storage.write(key: "token", value: jsonObject['token'].toString());
 
       return response.statusCode;

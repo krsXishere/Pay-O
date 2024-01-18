@@ -12,8 +12,7 @@ Fanza Atsila Fizarli as Hipster
 
 Currently the Pay-O mobile application is still in the development stage, so the sign-in (authentication) feature has just arrived. With an account like the following:
 
-eve.holt@reqres.in\
-cityslicka
+Get your ipconfig and choose de ipv4 address, in the auth_service you just change the host using ipv4 address. 
 
 and will be directed to the Dashboard.
 Currently implementation on the Frontend is still not far away, because the Backend is still in the development stage.
