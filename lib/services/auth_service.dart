@@ -20,7 +20,7 @@ class AuthService {
     };
     var body = jsonEncode(rawBody);
     var response = await http.post(
-      Uri.parse("http://192.168.1.8:9000/login"),
+      Uri.parse("http://192.168.129.62:9000/login"),
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",

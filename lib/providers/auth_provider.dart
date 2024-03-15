@@ -6,9 +6,9 @@ class AuthProvider with ChangeNotifier {
   bool _isObsecure = true;
   bool get isObsecure => _isObsecure;
   bool _isLoading = false;
+  bool get isLoading => _isLoading;
   bool _isObsecureConfirmation = true;
   bool get isObsecureConfirmation => _isObsecureConfirmation;
-  bool get isLoading => _isLoading;
   int _statusCode = 0;
   int get statusCode => _statusCode;
   int _indexTab = 0;

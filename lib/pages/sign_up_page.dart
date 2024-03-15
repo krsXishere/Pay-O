@@ -164,21 +164,6 @@ class _SignUpPageState extends State<SignUpPage>
     return Column(
       key: const Key("tabBarOne"),
       children: [
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.end,
-        //   children: [
-        //     GestureDetector(
-        //       onTap: () {},
-        //       child: SvgPicture.asset(
-        //         "assets/svg/cancel.svg",
-        //         color: black,
-        //       ),
-        //     ),
-        //   ],
-        // ),
-        // SizedBox(
-        //   height: defaultPadding,
-        // ),
         CustomTextFormFieldWidget(
           hintText: "Enter your full name",
           label: "Name",
